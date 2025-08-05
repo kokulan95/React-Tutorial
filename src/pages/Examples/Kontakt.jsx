@@ -1,7 +1,8 @@
-import Navbar from "./Navbar.jsx";
-import Footer from "./Footer.jsx";
+import Navbar from "../../Navbar.jsx";
+import Table from "./Table.jsx";
+import Footer from "../../Footer.jsx";
 
-function News() {
+function Kontakt() {
     return (
 
 
@@ -9,9 +10,9 @@ function News() {
         <main className="flex-grow-1 d-flex justify-content-center align-items-start py-5 px-3 bg-light">
             <div className="container">
                 <div className="card shadow-sm p-4 w-100">
-                    <h1 className="mb-3">News</h1>
+                    <h1 className="mb-3">Kontakt</h1>
                     <p className="mb-0">
-                        Dies ist die News-Seite. Hier erscheinen aktuelle Informationen.
+                        Dies ist die Kontaktseite. Hier können Benutzer Kontaktinformationen finden.
                     </p>
                 </div>
             </div>
@@ -19,8 +20,8 @@ function News() {
     </div>
 
 
-)
-    ;
+    )
+        ;
 }
 
-export default News;
+export default Kontakt;

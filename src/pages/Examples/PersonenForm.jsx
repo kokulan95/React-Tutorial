@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import Navbar from "./Navbar.jsx";
-import Footer from "./Footer.jsx";
 
 function PersonForm() {
     const [formData, setFormData] = useState({
-        forename: '',
+        vorname: '',
         name: '',
-        street: '',
-        zip: '',
+        abteilung: '',
+        firma: '',
     });
 
     const handleChange = (e) => {
@@ -17,30 +15,57 @@ function PersonForm() {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        alert(`Formular abgesendet:\n
-Vorname: ${formData.forename}
-Nachname: ${formData.name}
-Straße: ${formData.street}
-PLZ: ${formData.zip}`);
+
+        const formBody = new URLSearchParams();
+        for (const key in formData) {
+            formBody.append(key, formData[key]);
+        }
+
+        try {
+            const response = await fetch('https://wiwa.uni-trier.de/personenapi/createperson', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: formBody.toString(),
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                alert('Person erfolgreich gespeichert!');
+                setFormData({
+                    vorname: '',
+                    name: '',
+                    abteilung: '',
+                    firma: '',
+                });
+            } else {
+                console.error(result);
+                alert(`Fehler: ${result.message || 'Unbekannter Fehler'}`);
+            }
+        } catch (error) {
+            console.error(error);
+            alert('Netzwerkfehler beim Senden des Formulars.');
+        }
     };
 
     return (
-
         <div className="container-fluid min-vh-100 d-flex flex-column">
             <main className="flex-grow-1 d-flex justify-content-center align-items-start py-5">
-                <div className="container" style={{maxWidth: '600px'}}>
+                <div className="container" style={{ maxWidth: '600px' }}>
                     <h2 className="mb-4">Person Formular</h2>
                     <form onSubmit={handleSubmit}>
                         <div className="mb-3">
-                            <label htmlFor="forename" className="form-label">Vorname</label>
+                            <label htmlFor="vorname" className="form-label">Vorname</label>
                             <input
                                 type="text"
                                 className="form-control"
-                                id="forename"
-                                name="forename"
-                                value={formData.forename}
+                                id="vorname"
+                                name="vorname"
+                                value={formData.vorname}
                                 onChange={handleChange}
                                 placeholder="Max"
                             />
@@ -60,37 +85,36 @@ PLZ: ${formData.zip}`);
                         </div>
 
                         <div className="mb-3">
-                            <label htmlFor="street" className="form-label">Straße</label>
+                            <label htmlFor="abteilung" className="form-label">Abteilung</label>
                             <input
                                 type="text"
                                 className="form-control"
-                                id="street"
-                                name="street"
-                                value={formData.street}
+                                id="abteilung"
+                                name="abteilung"
+                                value={formData.abteilung}
                                 onChange={handleChange}
-                                placeholder="Musterstraße 1"
+                                placeholder="Marketing"
                             />
                         </div>
 
                         <div className="mb-3">
-                            <label htmlFor="zip" className="form-label">PLZ</label>
+                            <label htmlFor="firma" className="form-label">Firma</label>
                             <input
                                 type="text"
                                 className="form-control"
-                                id="zip"
-                                name="zip"
-                                value={formData.zip}
+                                id="firma"
+                                name="firma"
+                                value={formData.firma}
                                 onChange={handleChange}
-                                placeholder="12345"
+                                placeholder="Moselglider"
                             />
                         </div>
+
                         <button type="submit" className="btn btn-primary">Absenden</button>
                     </form>
                 </div>
             </main>
         </div>
-
-
     );
 }
 

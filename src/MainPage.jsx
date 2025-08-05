@@ -1,5 +1,5 @@
 import Navbar from "./Navbar";
-import Table from "./Table";
+import Table from "./pages/Examples/Table.jsx";
 import Footer from "./Footer";
 
 function MainPage() {
