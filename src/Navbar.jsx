@@ -25,10 +25,6 @@ function Navbar() {
                             <Link className="nav-link" to="/table">Tabelle</Link>
                         </li>
 
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/personenform">Personen</Link>
-                        </li>
-
                         {/* Dropdown Menu */}
                         <li className="nav-item dropdown">
                             <a
@@ -46,7 +42,7 @@ function Navbar() {
                                     <Link className="dropdown-item" to="/state">State</Link>
                                 </li>
                                 <li>
-                                    <Link className="dropdown-item" to="/todos">Formular</Link>
+                                    <Link className="dropdown-item" to="/personenform">Formular</Link>
                                 </li>
                                 <li>
                                     <Link className="dropdown-item" to="/conditionalrendering">Conditional Rendering</Link>
