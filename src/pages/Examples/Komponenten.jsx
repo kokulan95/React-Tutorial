@@ -2,7 +2,6 @@
 
 
 import HelloWorld , {Message} from "../../components/HelloWorld.jsx";
-import Counter from "../../components/Counter.jsx";
 
 function App() {
     return (

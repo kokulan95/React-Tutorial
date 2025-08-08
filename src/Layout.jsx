@@ -1,15 +1,16 @@
 import { Outlet, Link } from "react-router-dom";
 import React from "react";
 import Footer from "./Footer.jsx";
-import Navbar from "./Navbar.jsx";
+import Header from "./components/Header.jsx";
 
 export default function Layout() {
     return (
-        <div>
-            <Navbar/>
-            <Outlet/>
-            <Footer/>
-
+        <div className="container-fluid min-vh-100 d-flex flex-column">
+            <Header />
+            <main className="flex-grow-1">
+                <Outlet />
+            </main>
+            <Footer />
         </div>
     );
 }

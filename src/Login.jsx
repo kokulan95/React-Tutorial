@@ -23,7 +23,7 @@ function Login() {
 
     const handleSubmit = () => {
         // Simulate login success and navigate to main
-        navigate("/main");
+        navigate("/");
     };
 
     return (

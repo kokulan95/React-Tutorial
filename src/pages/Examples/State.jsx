@@ -38,7 +38,6 @@ export default function Gallery() {
     );
 }
 
-
 export function GalleryWithoutState() {
     let index = 0;
 

@@ -34,8 +34,6 @@ function DataTable() {
                         <th>Firma</th>
                         <th>Abteilung</th>
                         <th>Aktionen</th>
-
-
                     </tr>
                     </thead>
                     <tbody>
@@ -70,8 +68,6 @@ function DataTable() {
                                     </ul>
                                 </div>
                             </td>
-
-
                         </tr>
                     ))}
                     </tbody>

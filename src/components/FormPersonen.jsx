@@ -18,18 +18,14 @@ function PersonForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const formBody = new URLSearchParams();
-        for (const key in formData) {
-            formBody.append(key, formData[key]);
-        }
 
         try {
             const response = await fetch('https://wiwa.uni-trier.de/personenapi/createperson', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Content-Type': 'application/json',
                 },
-                body: formBody.toString(),
+                body: JSON.stringify(formData),
             });
 
             const result = await response.json();
@@ -56,7 +52,7 @@ function PersonForm() {
         <div className="container-fluid min-vh-100 d-flex flex-column">
             <main className="flex-grow-1 d-flex justify-content-center align-items-start py-5">
                 <div className="container" style={{ maxWidth: '600px' }}>
-                    <h2 className="mb-4">Person Formular</h2>
+                    <h2 className="mb-4">Formular</h2>
                     <form onSubmit={handleSubmit}>
                         <div className="mb-3">
                             <label htmlFor="vorname" className="form-label">Vorname</label>

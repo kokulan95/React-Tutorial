@@ -8,7 +8,7 @@ import PersonForm from "../../components/FormPersonen.jsx";
 function App() {
     return (
         <div className="container mt-4">
-            <h1 className="mb-4">Formular</h1>
+            <h1 className="mb-4">Personen</h1>
             <PersonForm />
         </div>
 
